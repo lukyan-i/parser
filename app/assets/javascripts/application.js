@@ -18,5 +18,8 @@
 // Include all twitter's javascripts
 //= require twitter/bootstrap
 
+// Or peek any of them yourself
+
+//= require twitter/bootstrap/button
 //= require twitter/bootstrap/collapse
 
