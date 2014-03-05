@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: appname_development
+  database: parser_development
   pool: 5
   timeout: 5000
   username: lukjanenko
@@ -10,7 +10,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: appname_test
+  database: parser_test
   pool: 5
   timeout: 5000
   username: lukjanenko

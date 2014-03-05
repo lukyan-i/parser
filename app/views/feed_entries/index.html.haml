@@ -1,0 +1,16 @@
+-#@feeds.each do |feed|
+-#@feed.entries.each do |entry|
+  =entry
+
+=#@feed.inspect
+%h2
+  =@title
+  =@url
+-@feed.entries.each do |entry|
+  %p
+    %h3
+      =entry.title
+    %p
+      =entry.url
+    %p
+      =entry.summary
