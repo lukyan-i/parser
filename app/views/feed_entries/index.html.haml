@@ -1,16 +1,15 @@
--#@feeds.each do |feed|
--#@feed.entries.each do |entry|
-  =entry
-
-=#@feed.inspect
-%h2
-  =@title
-  =@url
--@feed.entries.each do |entry|
-  %p
-    %h3
-      =entry.title
-    %p
-      =entry.url
-    %p
-      =entry.summary
+#accordion2.accordion
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#selector", "data-toggle" => "collapse", href: "#collapseOne"}
+        =@title
+    #collapseOne.accordion-body.collapse.in
+      .accordion-inner
+        -@feed.entries.each do |entry|
+          %p
+            %h3
+              =entry.title
+          %p
+            =entry.url
+          %p
+            =entry.summary

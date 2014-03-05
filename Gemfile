@@ -7,6 +7,7 @@ gem 'rails', '4.0.3'
 gem 'pg'
 gem 'feedzirra'
 gem 'haml'
+gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
