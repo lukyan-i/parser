@@ -1,22 +1,15 @@
-.col-lg-6
-  .input-group
-    %input.form-control{type: "text"}/
-    %span.input-group-btn
-      %button.btn.btn-default{type: "button"} Add
-
-%p
-  #accordion2.accordion
-    .accordion-group
-      .accordion-heading
-        %a.accordion-toggle{"data-parent" => "#selector", "data-toggle" => "collapse", href: "#collapseOne"}
-          =@title
-      #collapseOne.accordion-body.collapse.in
-        .accordion-inner
-          -@feed.entries.each do |entry|
-            %p
-              %h3
-                =entry.title
-            %p
-              =entry.url
-            %p
-              =entry.summary
+#accordion2.accordion
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseOne"}
+        =@title
+    #collapseOne.accordion-body.collapse
+      .accordion-inner
+        -@feed.entries.each do |entry|
+          %p
+            %h3
+              =entry.title
+          %p
+            =entry.url
+          %p
+            =entry.summary.sanitize!
