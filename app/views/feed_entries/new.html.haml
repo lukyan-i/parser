@@ -1,0 +1,11 @@
+%h2 Add new RSS feed
+.row-fluid
+  .span4.well
+    =form_for :feed, url: feed_entries_path do |m|
+      %fieldset
+        .col-md-9
+          .input-group
+            .controls
+              = m.text_field :url, :class => "input-large search-query", :type => "text"
+          .form-actions
+            = m.submit :class => "btn btn-primary"

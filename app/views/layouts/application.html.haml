@@ -6,13 +6,13 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    %header.page-header
-      .container
-        .col-lg-6
-          .input-group
-            %input.form-control{type: "text"}/
-            %span.input-group-btn
-              %button.btn.btn-default{type: "button"} Add
+    %header.navbar.navbar-fixed-top.navbar-inverse
+      .navbar-inner
+        .container
+          = link_to "RSS", root_path, id: "logo"
+          %nav
+            %ul.nav.pull-right
+              %li= link_to "Add feed", new_feed_entry_path
 
     .container
       = yield
