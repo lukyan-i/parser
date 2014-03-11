@@ -1,24 +1,7 @@
 class FeedEntriesController < ApplicationController
 
   def index
-    feed_entries=FeedEntry.all
-    @news=Hash.new
-    feed_entries.entries.each do |feed|
-      if @news[feed.feed_url]
-        @news[feed.feed_url].push(feed)
-
-        #@t.each do |val|
-          #@ar=val.title
-        #end
-      else
-        @news[feed.feed_url]=Array.new
-      end
-    end
-
-  end
-
-  def new
-
+    @feed=Feed.all
   end
 
   def create
