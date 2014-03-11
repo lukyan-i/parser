@@ -1,5 +1,5 @@
 class Feed < ActiveRecord::Base
-has_many :feed_etries
+has_many :feed_entries
 
   def self.update_feed(feed_url)
     feed=Feedzirra::Feed.fetch_and_parse(feed_url)

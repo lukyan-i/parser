@@ -1,6 +1,6 @@
 class FeedEntry < ActiveRecord::Base
 belongs_to :feed
-  def self.update_from_feed(feed_url)
+  def self.update_from_feed(feed_url,feed_id)
     feed=Feedzirra::Feed.fetch_and_parse(feed_url)
 
     feed.entries.each do |entry|
@@ -11,7 +11,7 @@ belongs_to :feed
             :url=>entry.url,
             :published_at=>entry.published,
             :guid=>entry.id,
-            :feed_url=>feed_url
+            :feed_id=>feed_id
         )
       end
     end

@@ -1,16 +1,15 @@
--e=0
+-i=0
 -@feed.each do |channel|
--e+=1
+-i+=1
   #accordion2.accordion
     .accordion-group
       .accordion-heading
-        %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapse#{e}"}
+        %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapse#{i}"}
           =channel.title
           =channel.url
-      %div{ :id => "collapse#{e}", :class=>"accordion-body collapse" }
+      %div{ :id => "collapse#{i}", :class=>"accordion-body collapse" }
         .accordion-inner
-          -feed_entries=FeedEntry.where(:feed_url=>channel.url)
-          -feed_entries.entries.each do |entry|
+          -channel.feed_entries.entries.each do |entry|
             %p
               %h3
                 =entry.name
