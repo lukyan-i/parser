@@ -5,6 +5,9 @@
     .accordion-group
       .accordion-heading
         %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapse#{e}"}
+          -title_name=Feed.find_by(:url=>key)
+          -if title_name!=nil
+            =title_name.title
           =key
       %div{ :id => "collapse#{e}", :class=>"accordion-body collapse" }
         .accordion-inner

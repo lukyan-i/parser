@@ -6,10 +6,15 @@ class FeedEntriesController < ApplicationController
     feed_entries.entries.each do |feed|
       if @news[feed.feed_url]
         @news[feed.feed_url].push(feed)
+
+        #@t.each do |val|
+          #@ar=val.title
+        #end
       else
         @news[feed.feed_url]=Array.new
       end
     end
+
   end
 
   def new
@@ -17,7 +22,9 @@ class FeedEntriesController < ApplicationController
   end
 
   def create
-    if @feed_entry = FeedEntry.update_from_feed(params[:feed][:url])
+
+    if @feed=Feed.update_feed(params[:feed][:url])
+      @feed_entry = FeedEntry.update_from_feed(params[:feed][:url])
       redirect_to action: :index
     else
       redirect_to :back
