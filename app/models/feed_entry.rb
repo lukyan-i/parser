@@ -1,4 +1,3 @@
-require 'feedzirra'
 class FeedEntry < ActiveRecord::Base
 belongs_to :feed
   def self.update_from_feed(feed_url)

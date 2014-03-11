@@ -1,4 +1,3 @@
-require 'feedzirra'
 class Feed < ActiveRecord::Base
 has_many :feed_etries
 
