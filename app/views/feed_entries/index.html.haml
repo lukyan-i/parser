@@ -1,15 +1,14 @@
--i=0
--@feed.each do |channel|
--i+=1
+-@feed.each_with_index do |channel, i|
   #accordion2.accordion
     .accordion-group
       .accordion-heading
         %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapse#{i}"}
           =channel.title
+          = channel.feed_entries.entries.class
           =channel.url
       %div{ :id => "collapse#{i}", :class=>"accordion-body collapse" }
         .accordion-inner
-          -channel.feed_entries.entries.each do |entry|
+          -channel.feed_entries.each do |entry|
             %p
               %h3
                 =entry.name
