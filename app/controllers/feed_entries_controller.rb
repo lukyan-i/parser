@@ -1,13 +1,15 @@
 class FeedEntriesController < ApplicationController
-  require 'feedzirra'
 
   def index
-    @feed_entries=FeedEntry.all
-    #@feed = Feedzirra::Feed.fetch_and_parse("http://news.yandex.ru/index.rss")
-   # @feed = Feedzirra::Feed.fetch_and_parse("http://www.rbc.ua/static/rss/topnews.rus.rss.xml")
-    #@feed = Feedzirra::Feed.fetch_and_parse("http://podrobnosti.ua/rss/opinion.rss/")
-  # @title = @feed.title
-    #@feed_url=@feed.url
+    feed_entries=FeedEntry.all
+    @news=Hash.new
+    feed_entries.entries.each do |feed|
+      if @news[feed.feed_url]
+        @news[feed.feed_url].push(feed)
+      else
+        @news[feed.feed_url]=Array.new
+      end
+    end
   end
 
   def new
@@ -15,15 +17,12 @@ class FeedEntriesController < ApplicationController
   end
 
   def create
-    if  @feed=Feed.update_feed(params[:feed][:url])
-      @feed_entry = FeedEntry.update_from_feed(params[:feed][:url])
+    if @feed_entry = FeedEntry.update_from_feed(params[:feed][:url])
       redirect_to action: :index
     else
       redirect_to :back
-      flash[:notice] = "Invalid Url"
+      flash[:notice] = "Invalid url"
     end
 
   end
-
-
 end
